@@ -2,6 +2,8 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const BD = require("./model/bdjuegos");
+
 mongoose
   .connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
