@@ -1,10 +1,10 @@
 //#1
-const mongoose = requiere("mongoose");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //# 2Crear representacion de los datos
 
-let GameSchemaa = Schema({
+let GameSchema = Schema({
   routeName: String,
   gameTitle: String,
   gameDescription: String,
