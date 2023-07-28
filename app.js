@@ -38,7 +38,7 @@ app.use(express.json());
 
 //DATA
 //============================
-/*const juegos = [
+const juegos = [
   {
     routeName: "isaac",
     gameTitle: "Isaac",
@@ -47,13 +47,13 @@ app.use(express.json());
     gameDeveloper: "Edmun",
     gameMode: "Un jugador",
   },
-];*/
+];
 //===========================
 
 //RUTAS
 //=================================================
 
-/*app.get("/isaac", function (req, res) {
+app.get("/isaac", function (req, res) {
   res.json(isaac);
 });
 
@@ -64,7 +64,7 @@ app.get("/:juegos", function (req, res) {
   console.log(chosen);
 
   res.end();
-});*/
+});
 
 app.get("/", function (req, res) {
   res.send("Pagina Principal");
@@ -102,7 +102,7 @@ app.post("/api/juegos", function (req, res) {
   //[Game name,description,release date, game dev, players]
 });
 
-async function newGame() {
+/*async function newGame() {
   let jg = new JG({
     routeName: "isaac",
     gameTitle: "Isaac",
@@ -114,7 +114,25 @@ async function newGame() {
 
   await jg.save();
 }
-newGame();
+
+
+async function getAllGammes() {
+  let juegos = await JG.find();
+  console.log(juegos);
+}
+
+async function getAllGammes() {
+  let juegos = await JG.find();
+  console.log(juegos);
+}
+
+getAllGammes();
+newGame();*/
+
+//Display all games
+app.get("/api/juegos/:juegos", function (req, res) {
+  let games = JG.find();
+});
 
 //=================================================
 
