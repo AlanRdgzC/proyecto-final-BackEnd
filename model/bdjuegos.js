@@ -11,6 +11,7 @@ let GameSchema = Schema({
   gameLaunch: String,
   gameDeveloper: String,
   gameMode: String,
+  image: String,
 });
 
 // 3

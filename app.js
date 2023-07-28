@@ -110,6 +110,15 @@ app.post("/api/juegos", async function (req, res) {
   //[Game name,description,release date, game dev, players]
 });
 
+app.delete("/api/delete:id", async function (req, res) {
+  let id = req.params.id;
+
+  let game = await JG.findOne({ _id: id });
+
+  await personaje.deleteOne();
+  res.json({});
+});
+
 /*async function newGame() {
   let jg = new JG({
     routeName: "isaac",
@@ -160,13 +169,13 @@ app.get("/juegoEjemplo", function (req, res) {
   // res.json({ Juego: "Hollow Knight" });
 });
 
-app.post("/juegoEjemplo", function (req, res) {
+/*app.post("/juegoEjemplo", function (req, res) {
   let juego = req.body.juego;
   let gamemode = req.body.gamemode;
 
   res.send(`Juego: ${juego} gamemode: ${gamemode}`);
   // res.json(req.body);
-});
+});*/
 
 app.put("/juegos", function (req, res) {
   let juego = req.body.juego;
