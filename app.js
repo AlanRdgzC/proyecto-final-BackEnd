@@ -102,44 +102,11 @@ app.delete("/api/delete:id", async function (req, res) {
   res.json({});
 });
 
-/*async function newGame() {
-  let jg = new JG({
-    routeName: "isaac",
-    gameTitle: "Isaac",
-    gameDescription: "Mejor juego",
-    gameLaunch: "2015",
-    gameDeveloper: "Edmun",
-    gameMode: "Un jugador",
-  });
-
-  await jg.save();
-}
-
-
-async function getAllGammes() {
-  let juegos = await JG.find();
-  console.log(juegos);
-}
-
-async function getAllGammes() {
-  let juegos = await JG.find();
-  console.log(juegos);
-}
-
-getAllGammes();
-newGame();*/
-
 //Display all games
 app.get("/api/juegos", async function (req, res) {
   let games = await JG.find();
   return res.json(games);
 });
-
-/*app.get("/api/juegos/:juegos", async function (req, res) {
-  let games = await JG.find({ gameMode: "Un JUgador" });
-
-  return res.json(games);
-});*/
 
 //=================================================
 
