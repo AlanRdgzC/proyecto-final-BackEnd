@@ -40,12 +40,12 @@ app.use(express.json());
 //============================
 const juegos = [
   {
-    routeName: "isaac",
-    gameTitle: "Isaac",
-    gameDescription: "Mejor juego",
-    gameLaunch: "2015",
-    gameDeveloper: "Edmun",
-    gameMode: "Un jugador",
+    //routeName: "isaac",
+    //gameTitle: "Isaac",
+    //gameDescription: "Mejor juego",
+    //gameLaunch: "2015",
+    //gameDeveloper: "Edmun",
+    //gameMode: "Un jugador",
   },
 ];
 //===========================
@@ -53,7 +53,7 @@ const juegos = [
 //RUTAS
 //=================================================
 
-app.get("/isaac", function (req, res) {
+/*app.get("/isaac", function (req, res) {
   res.json(isaac);
 });
 
@@ -69,11 +69,12 @@ app.get("/:juegos", function (req, res) {
 app.get("/", function (req, res) {
   res.send("Pagina Principal");
 });
+*/
 
 //manda todo el arreglo de juegos
-app.get("/api/juegos", function (req, res) {
+/*app.get("/api/juegos", function (req, res) {
   return res.json(juegos);
-});
+});*/
 
 //manda un juego del arreglo dinamico
 app.get("/api/juegos/:juegos", async function (req, res) {
