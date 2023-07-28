@@ -12,6 +12,7 @@ let GameSchema = Schema({
   gameDeveloper: String,
   gameMode: String,
   image: String,
+  state: String,
 });
 
 // 3
