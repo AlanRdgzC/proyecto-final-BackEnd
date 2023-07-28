@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const JG = require("./model/bdjuegos");
-
 mongoose
   .connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
@@ -109,6 +108,20 @@ app.post("/api/juegos", async function (req, res) {
 
   res.json(game);
   //[Game name,description,release date, game dev, players]
+});
+
+app.put("/api/actualizarEstado", async function (req, res) {
+
+let id = req.body.id
+let state = req.body.state
+console.log(id)
+console.log(state)
+//let game = await JG.find({_id: id})
+//console.log(game)
+//game.state = state
+await JG.updateOne({_id: id}, {state: state})
+res.json(id)
+  // res.json(req.body);
 });
 
 app.delete("/api/delete:id", async function (req, res) {
