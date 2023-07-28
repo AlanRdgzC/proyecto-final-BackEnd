@@ -147,7 +147,7 @@ getAllGammes();
 newGame();*/
 
 //Display all games
-app.get("/api/juegos/:juegos", async function (req, res) {
+app.get("/api/juegos", async function (req, res) {
   let games = await JG.find();
   return res.json(games);
 });
