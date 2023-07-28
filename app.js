@@ -76,29 +76,37 @@ app.get("/api/juegos", function (req, res) {
 });
 
 //manda un juego del arreglo dinamico
-app.get("/api/juegos/:juegos", function (req, res) {
+app.get("/api/juegos/:juegos", async function (req, res) {
   //selecciona el juego escogido
-  var chosen = req.params.juegos;
+  //var chosen = req.params.juegos;
+  const chosen = req.params.juegos;
+
+  console.log(chosen);
+
+  let games = await JG.find({ routeName: chosen });
+  //return res.json(games);
 
   //Filtro para mostrar el juego
-  for (var i = 0; i < juegos.length; i++) {
+  /*for (var i = 0; i < juegos.length; i++) {
     if (chosen === juegos[i].routeName) {
       return res.json(juegos[i]);
     }
-  }
+  }*/
 
-  return res.json({});
+  return res.json(games);
 });
 
 //Crea nuevos personajes- JSON input
-app.post("/api/juegos", function (req, res) {
+app.post("/api/juegos", async function (req, res) {
   const newgame = req.body; //Recuperamos la info
 
   console.log(newgame);
 
-  juegos.push(newgame);
+  let game = new JG(newgame);
+  await game.save();
+  //juegos.push(newgame);
 
-  res.json(newgame);
+  res.json(game);
   //[Game name,description,release date, game dev, players]
 });
 
@@ -130,9 +138,16 @@ getAllGammes();
 newGame();*/
 
 //Display all games
-app.get("/api/juegos/:juegos", function (req, res) {
-  let games = JG.find();
+app.get("/api/juegos/:juegos", async function (req, res) {
+  let games = await JG.find();
+  return res.json(games);
 });
+
+/*app.get("/api/juegos/:juegos", async function (req, res) {
+  let games = await JG.find({ gameMode: "Un JUgador" });
+
+  return res.json(games);
+});*/
 
 //=================================================
 
