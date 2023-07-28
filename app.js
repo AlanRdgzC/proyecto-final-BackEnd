@@ -111,16 +111,15 @@ app.post("/api/juegos", async function (req, res) {
 });
 
 app.put("/api/actualizarEstado", async function (req, res) {
-
-let id = req.body.id
-let state = req.body.state
-console.log(id)
-console.log(state)
-//let game = await JG.find({_id: id})
-//console.log(game)
-//game.state = state
-await JG.updateOne({_id: id}, {state: state})
-res.json(id)
+  let id = req.body.id;
+  let state = req.body.state;
+  console.log(id);
+  console.log(state);
+  //let game = await JG.find({_id: id})
+  //console.log(game)
+  //game.state = state
+  await JG.updateOne({ _id: id }, { state: state });
+  res.json(id);
   // res.json(req.body);
 });
 
