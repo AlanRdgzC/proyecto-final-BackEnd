@@ -52,29 +52,6 @@ const juegos = [
 //RUTAS
 //=================================================
 
-/*app.get("/isaac", function (req, res) {
-  res.json(isaac);
-});
-
-app.get("/:juegos", function (req, res) {
-  const chosen = req.params.juegos;
-
-  //logea
-  console.log(chosen);
-
-  res.end();
-});
-
-app.get("/", function (req, res) {
-  res.send("Pagina Principal");
-});
-*/
-
-//manda todo el arreglo de juegos
-/*app.get("/api/juegos", function (req, res) {
-  return res.json(juegos);
-});*/
-
 //manda un juego del arreglo dinamico
 app.get("/api/juegos/:juegos", async function (req, res) {
   //selecciona el juego escogido
@@ -85,13 +62,6 @@ app.get("/api/juegos/:juegos", async function (req, res) {
 
   let games = await JG.find({ routeName: chosen });
   //return res.json(games);
-
-  //Filtro para mostrar el juego
-  /*for (var i = 0; i < juegos.length; i++) {
-    if (chosen === juegos[i].routeName) {
-      return res.json(juegos[i]);
-    }
-  }*/
 
   return res.json(games);
 });
@@ -132,44 +102,11 @@ app.delete("/api/delete:id", async function (req, res) {
   res.json({});
 });
 
-/*async function newGame() {
-  let jg = new JG({
-    routeName: "isaac",
-    gameTitle: "Isaac",
-    gameDescription: "Mejor juego",
-    gameLaunch: "2015",
-    gameDeveloper: "Edmun",
-    gameMode: "Un jugador",
-  });
-
-  await jg.save();
-}
-
-
-async function getAllGammes() {
-  let juegos = await JG.find();
-  console.log(juegos);
-}
-
-async function getAllGammes() {
-  let juegos = await JG.find();
-  console.log(juegos);
-}
-
-getAllGammes();
-newGame();*/
-
 //Display all games
 app.get("/api/juegos", async function (req, res) {
   let games = await JG.find();
   return res.json(games);
 });
-
-/*app.get("/api/juegos/:juegos", async function (req, res) {
-  let games = await JG.find({ gameMode: "Un JUgador" });
-
-  return res.json(games);
-});*/
 
 //=================================================
 
@@ -181,14 +118,6 @@ app.get("/juegoEjemplo", function (req, res) {
   res.send("Aqui los juegos ");
   // res.json({ Juego: "Hollow Knight" });
 });
-
-/*app.post("/juegoEjemplo", function (req, res) {
-  let juego = req.body.juego;
-  let gamemode = req.body.gamemode;
-
-  res.send(`Juego: ${juego} gamemode: ${gamemode}`);
-  // res.json(req.body);
-});*/
 
 app.put("/juegos", function (req, res) {
   let juego = req.body.juego;
