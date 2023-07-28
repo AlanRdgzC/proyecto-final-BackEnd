@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const BD = require("./model/bdjuegos");
+const JG = require("./model/bdjuegos");
 
 mongoose
   .connect(process.env.DB_CONNECTION, {
@@ -38,7 +38,7 @@ app.use(express.json());
 
 //DATA
 //============================
-const juegos = [
+/*const juegos = [
   {
     routeName: "isaac",
     gameTitle: "Isaac",
@@ -47,7 +47,7 @@ const juegos = [
     gameDeveloper: "Edmun",
     gameMode: "Un jugador",
   },
-];
+];*/
 //===========================
 
 //RUTAS
@@ -101,6 +101,21 @@ app.post("/api/juegos", function (req, res) {
   res.json(newgame);
   //[Game name,description,release date, game dev, players]
 });
+
+async function newGame() {
+  let jg = new JG({
+    routeName: "isaac",
+    gameTitle: "Isaac",
+    gameDescription: "Mejor juego",
+    gameLaunch: "2015",
+    gameDeveloper: "Edmun",
+    gameMode: "Un jugador",
+  });
+
+  await jg.save();
+}
+newGame();
+
 //=================================================
 
 //GET, POST, PUT, DELETE
