@@ -92,13 +92,14 @@ app.get("/api/juegos/:juegos", function (req, res) {
 
 //Crea nuevos personajes- JSON input
 app.post("/api/juegos", function (req, res) {
-  const newgame = req.body;
+  const newgame = req.body; //Recuperamos la info
 
   console.log(newgame);
 
   juegos.push(newgame);
 
   res.json(newgame);
+  //[Game name,description,release date, game dev, players]
 });
 //=================================================
 
